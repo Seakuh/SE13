@@ -16,12 +16,13 @@ public class BeobeachterTest {
 		Scanner e = new Scanner(System.in);
 
 		int zs = e.nextInt();
+		System.out.println(zs);
 
 		if (zs == 1) {
-			pF.createProduct("status");			
-		}else if(zs == 2) {
-			pF.createProduct("beschreibung");
-		}else {
+			ressource = pF.createProduct("state");
+		} else if (zs == 2) {
+			ressource = pF.createProduct("beschreibung");
+		} else {
 			System.out.println("Falsche Eingabe");
 		}
 		anmelden();
@@ -33,16 +34,20 @@ public class BeobeachterTest {
 		System.out.println("2: Zustand ändern");
 		System.out.println("3: Neuer Nutzer anmelden");
 		System.out.println("4: Abmelden");
+		
 		Scanner intEing = new Scanner(System.in);
 		int eing = intEing.nextInt();
 
 		switch (eing) {
 		case 1:
-
 			if (aktuell.getSubject().getState() instanceof ConcreteSubject) {
+				System.out.println("---Aktueller Status von ConcreteSubject---");
 				System.out.println(((State) aktuell.getSubject().getState()).getStatus());
 			} else if (aktuell.getSubject().getState() instanceof ConcreteSubject1) {
+				System.out.println("---Aktueller Status von ConcreteSubject1---");
 				System.out.println(((Beschreibung) aktuell.getSubject().getState()).getBeschreibung());
+			}else {
+				System.out.println("404 - Error");
 			}
 			auswahl();
 			break;
