@@ -2,20 +2,32 @@ package ctr;
 
 public class ConcreteObserver extends Observer {
 
-	private Subject subject;
+	private ConcreteSubject subject;
+	private ConcreteSubject1 subject1;
+	private boolean istSub = false;
+	public boolean isIstSub() {
+		return istSub;
+	}
+
 	private String name = "";
 
-	public ConcreteObserver(String n, Subject s) {
+	public ConcreteObserver(String n, ConcreteSubject s) {
 		subject = s;
+		name = n;
+		istSub = true;
+	}
+	
+	public ConcreteObserver(String n, ConcreteSubject1 s) {
+		subject1 = s;
 		name = n;
 	}
 
 	@Override
 	public void update() {
-		if (subject instanceof ConcreteSubject) {
+		if (istSub) {
 			name = ((State) ((ConcreteSubject) subject).getState()).getStatus();
-		} else if (subject instanceof ConcreteSubject1) {
-			name = ((Beschreibung) ((ConcreteSubject1) subject).getState()).getBeschreibung();
+		} else {
+			name = ((Beschreibung) ((ConcreteSubject1) subject1).getState()).getBeschreibung();
 		}
 	}
 

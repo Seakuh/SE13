@@ -20,8 +20,10 @@ public class BeobeachterTest {
 
 		if (zs == 1) {
 			ressource = pF.createProduct("state");
+			aktuell = new ConcreteObserver("St", ressource);
 		} else if (zs == 2) {
 			ressource = pF.createProduct("beschreibung");
+			aktuell = new ConcreteObserver("Be", ressource);
 		} else {
 			System.out.println("Falsche Eingabe");
 		}
