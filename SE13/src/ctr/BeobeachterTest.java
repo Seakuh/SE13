@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class BeobeachterTest {
 
 	static ConcreteSubject ressource = new ConcreteSubject();
+	static ConcreteObserver aktuell;
 
 	public static void main(String[] args) {
 
@@ -22,11 +23,20 @@ public class BeobeachterTest {
 
 		switch (eing) {
 		case 1:
-			System.out.println(ressource.getState().getStatus());
+			System.out.println(aktuell.getSubject().getState().getStatus());
 			auswahl();
+			break;
 		case 2:
+			System.out.println("Geben Sie den neuen Zustand ein: ");
+			Scanner zustandNew = new Scanner(System.in);
+			aktuell.getSubject().setState(new State(zustandNew.nextLine()));
+			auswahl();
+			break;
 		case 3:
+			anmelden();
 		case 4:
+			aktuell.getSubject().detach(aktuell);v
+			aktuell = null;
 			anmelden();
 		}
 	}
@@ -34,8 +44,8 @@ public class BeobeachterTest {
 	private static void anmelden() {
 		System.out.println("Wer soll angemeldet werden?");
 		Scanner eing = new Scanner(System.in);
-
-		ressource.attach(new ConcreteObserver(eing.nextLine()));
+		aktuell = new ConcreteObserver(eing.nextLine(), ressource);
+		ressource.attach(aktuell);
 		auswahl();
 
 	}
