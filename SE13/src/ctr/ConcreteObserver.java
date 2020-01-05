@@ -2,27 +2,29 @@ package ctr;
 
 public class ConcreteObserver extends Observer {
 
-	private ConcreteSubject subject;
+	private Subject subject;
 	private String name = "";
-	
-	public ConcreteObserver(String n, ConcreteSubject s) {
+
+	public ConcreteObserver(String n, Subject s) {
 		subject = s;
 		name = n;
 	}
-	
+
 	@Override
 	public void update() {
-		name = subject.getState().getStatus();
+		if (subject instanceof ConcreteSubject) {
+			name = ((State) ((ConcreteSubject) subject).getState()).getStatus();
+		} else if (subject instanceof ConcreteSubject1) {
+			name = ((Beschreibung) ((ConcreteSubject1) subject).getState()).getBeschreibung();
+		}
 	}
 
-	public ConcreteSubject getSubject() {
+	public Subject getSubject() {
 		return subject;
 	}
 
-	public void setSubject(ConcreteSubject subject) {
+	public void setSubject(Subject subject) {
 		this.subject = subject;
 	}
-	
-	
 
 }

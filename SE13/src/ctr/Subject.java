@@ -3,7 +3,7 @@ package ctr;
 import java.util.ArrayList;
 
 public class Subject {
-	
+
 	ArrayList<Observer> observers = new ArrayList<Observer>();
 
 	public ArrayList<Observer> getObservers() {
@@ -21,11 +21,20 @@ public class Subject {
 	public void detach(Observer s) {
 		observers.remove(s);
 	}
-	
+
 	public void notification() {
-		for(Observer s : observers) {
+		for (Observer s : observers) {
 			s.update();
 		}
 	}
+
+	public Object getState() {
+		return null;
+	}
+
+	public void setState(Object s) {
+	}
+	
+	
 
 }

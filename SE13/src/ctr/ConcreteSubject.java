@@ -3,17 +3,19 @@ package ctr;
 public class ConcreteSubject extends Subject {
 
 	private State status;
-	
+
 	public ConcreteSubject() {
 		status = new State("Standard");
 	}
-	
-	public State getState() {
-		return status;
+
+	@Override
+	public Object getState() {
+		return (State)status;
 	}
 
-	public void setState(State s) {
-		status = s;
+	@Override
+	public void setState(Object s) {
+		status = (State)s;
 	}
-	
+
 }
