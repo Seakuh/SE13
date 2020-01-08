@@ -34,9 +34,13 @@ public class ConcreteObserver extends Observer {
 	public Subject getSubject() {
 		return subject;
 	}
+	public Subject getSubject1() {
+		return subject1;
+	}
 
 	public void setSubject(Subject subject) {
-		this.subject = subject;
+		this.subject = (ConcreteSubject) subject;
+		this.subject1 = (ConcreteSubject1) subject;
 	}
 
 }
